@@ -1,0 +1,22 @@
+.text-center{
+  text-align:center;
+}
+
+.contact-list img{
+  height:40px;
+  width:40px;
+}
+
+.img-file {
+  position:relative;
+  border:1px solid gray;
+}
+
+.img-file input[type="file"] {
+  position:absolute;
+  left:0;
+  top:0;
+  opacity:0;
+  width:100%;
+  height:100%;
+}

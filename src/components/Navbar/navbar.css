@@ -1,0 +1,14 @@
+ul.navbar{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.navbar li{
+  float:left;
+}
+.navbar li a{
+  text-decoration: none;
+  display:block;
+  padding:10px 15px;
+  color:aqua ;
+}
