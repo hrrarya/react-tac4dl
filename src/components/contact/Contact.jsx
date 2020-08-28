@@ -32,13 +32,13 @@ class Contact extends React.Component {
         <form onSubmit={this.handleOnSubmit}>
            <div className="row text-center">
              <div className="four columns img-file">
-              <span>
+              {img ? <img src={img} alt={fname}/> : <span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="3.2"/>
                   <path d="M9 2l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2h-3.17l-1.83-2h-6zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
                   <path d="M0 0h24v24h-24z" fill="none"/>
                 </svg>
-              </span>
+              </span>}
               <input accept="image/*" className="u-full-width" type="file" name="img" onChange={this.handleOnChange}/>
              </div>
             <div className="eight columns">

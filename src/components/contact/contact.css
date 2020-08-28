@@ -9,7 +9,8 @@
 
 .img-file {
   position:relative;
-  border:1px solid gray;
+  box-shadow: 2px 2px 2px 2px whitesmoke;
+  padding:5px; 
 }
 
 .img-file input[type="file"] {
