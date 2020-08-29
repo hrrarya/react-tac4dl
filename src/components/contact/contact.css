@@ -1,23 +1,26 @@
-.text-center{
-  text-align:center;
+.text-center {
+  text-align: center;
 }
 
-.contact-list img{
-  height:40px;
-  width:40px;
+.contact-list img {
+  height: 40px;
+  width: 40px;
 }
 
 .img-file {
-  position:relative;
+  position: relative;
   box-shadow: 2px 2px 2px 2px whitesmoke;
-  padding:5px; 
+  padding: 5px;
 }
 
 .img-file input[type="file"] {
-  position:absolute;
-  left:0;
-  top:0;
-  opacity:0;
-  width:100%;
-  height:100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+.contact-create {
+  font-size: 32px;
 }

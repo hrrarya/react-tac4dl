@@ -1,5 +1,4 @@
-import * as Types from './types.js';
-
+import * as Types from "./types.js";
 
 export const addContact = contact => dispatch => {
   dispatch({
@@ -8,4 +7,13 @@ export const addContact = contact => dispatch => {
       contact
     }
   });
-}
+};
+
+export const removeContact = contact => dispatch => {
+  dispatch({
+    type: Types.REMOVE_CONTACT,
+    payload: {
+      contact
+    }
+  });
+};
