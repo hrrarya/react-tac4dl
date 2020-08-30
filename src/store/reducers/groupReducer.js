@@ -1,7 +1,8 @@
 import * as Types from "../actions/types";
 
 const init = {
-  group: []
+  group: [],
+  groupName: ""
 };
 
 const groupReducer = (state = init, action) => {
@@ -19,6 +20,15 @@ const groupReducer = (state = init, action) => {
       };
     }
 
+    case Types.GET_GROUP: {
+      console.log(
+        state.group.find(item => item.id === action.payload.id).gname
+      );
+      return {
+        ...state,
+        groupName: state.group.find(item => item.id === action.payload.id).gname
+      };
+    }
     default:
       return state;
   }

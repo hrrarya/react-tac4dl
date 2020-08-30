@@ -17,3 +17,12 @@ export const removeGroup = group => dispatch => {
     }
   });
 };
+
+export const getGroup = id => dispatch => {
+  dispatch({
+    type: Types.GET_GROUP,
+    payload: {
+      id
+    }
+  });
+};

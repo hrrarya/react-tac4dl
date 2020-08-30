@@ -40,7 +40,12 @@ class Group extends Component {
             placeholder="Group Name"
             onChange={this.handleOnChange}
           />
-          <input className="button-primary" type="submit" value="Submit" />
+          <input
+            onClick={this.handleOnSubmit}
+            className="button-primary"
+            type="submit"
+            value="Submit"
+          />
         </form>
       </div>
     );

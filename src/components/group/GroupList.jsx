@@ -5,10 +5,8 @@ import { connect } from "react-redux";
 import { removeGroup } from "../../store/actions/groupActions";
 
 class GroupList extends Component {
-  state = {};
   render() {
     const { group } = this.props.group;
-
     return (
       <div className="row">
         <Link to="/create-group">
