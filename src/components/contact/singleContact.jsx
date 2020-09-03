@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import avater from "../../img/avater.jpg";
+// import avater from "../../img/avater.jpg";
 
 class SingleContact extends Component {
   state = {
@@ -33,7 +33,7 @@ class SingleContact extends Component {
           <div className="four columns">
             <div className="img-file">
               <span>
-                <img src={avater} alt="contact-avater" />
+                <img src={"https://cdn.jsdelivr.net/gh/hrrarya/react-tac4dl@master/src/img/avater.jpg"} alt="contact-avater" />
               </span>
               <input name="Select File" type="file" />
             </div>
