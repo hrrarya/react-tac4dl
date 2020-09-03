@@ -40,11 +40,7 @@ class ContactList extends React.Component {
                   <td>{item.workplace}</td>
                   <td>{item.phone}</td>
                   <td>{item.email}</td>
-<<<<<<< HEAD
                   <td>{groupName ? groupName.gname : ""}</td>
-=======
-                  <td>{groupName ? groupName.gname : ''}</td>
->>>>>>> 984595a7a1cca8b392329a8d158450289914c73f
                   <td>
                     <button onClick={() => this.props.removeContact(item)}>
                       Remove
