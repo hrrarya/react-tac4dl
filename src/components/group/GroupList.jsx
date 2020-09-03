@@ -22,7 +22,9 @@ class GroupList extends Component {
           <tbody>
             {group.map(item => (
               <tr key={item.id} id={item.id}>
-                <td>{item.gname}</td>
+                <td>
+                  <Link to={`/group-list/${item.id}`}>{item.gname}</Link>
+                </td>
                 <td>
                   <button onClick={() => this.props.removeGroup(item)}>
                     Remove

@@ -2,7 +2,6 @@ import React from "react";
 import "./contact.css";
 import { connect } from "react-redux";
 import { removeContact } from "../../store/actions/contactActions";
-import { getGroup } from "../../store/actions/groupActions";
 import { Link } from "react-router-dom";
 
 class ContactList extends React.Component {
@@ -33,11 +32,15 @@ class ContactList extends React.Component {
               console.log(groupName);
               return (
                 <tr key={item.id} id={item.id}>
-                  <td>{`${item.fname} ${item.lname}`}</td>
+                  <td>
+                    <Link
+                      to={`/contact-list/${item.id}`}
+                    >{`${item.fname} ${item.lname}`}</Link>{" "}
+                  </td>
                   <td>{item.workplace}</td>
                   <td>{item.phone}</td>
                   <td>{item.email}</td>
-                  <td>{groupName?.gname}</td>
+                  <td>{groupName ? groupName.gname : ""}</td>
                   <td>
                     <button onClick={() => this.props.removeContact(item)}>
                       Remove

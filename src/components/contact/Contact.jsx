@@ -50,6 +50,7 @@ class Contact extends React.Component {
 
     return (
       <div className="contact">
+        <h5>Add Contact</h5>
         <form onSubmit={this.handleOnSubmit}>
           <input
             className="u-full-width"

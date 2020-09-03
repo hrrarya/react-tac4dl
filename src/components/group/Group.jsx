@@ -31,6 +31,7 @@ class Group extends Component {
     const { gname } = this.state;
     return (
       <div className="group">
+        <h5>Add Group</h5>
         <form onSubmit={this.handleOnSubmit}>
           <input
             className="u-full-width"

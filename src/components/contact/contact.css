@@ -11,6 +11,10 @@
   position: relative;
   box-shadow: 2px 2px 2px 2px whitesmoke;
   padding: 5px;
+  text-align: center;
+}
+.img-file img {
+  width: 100%;
 }
 
 .img-file input[type="file"] {
@@ -23,4 +27,12 @@
 }
 .contact-create {
   font-size: 32px;
+}
+
+.single-contact {
+  width: 800px;
+  margin: 0 auto;
+}
+.contact-data * {
+  margin-bottom: 0;
 }
