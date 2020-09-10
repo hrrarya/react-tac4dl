@@ -15,7 +15,8 @@ class SingleGroup extends Component {
           <button className="contact-create">+</button>
         </Link>
         <li>
-          {groupName.gname}
+          {groupName.gname} {" "} 
+                  <Link to={`/group-edit/${id}`}>Edit</Link>
           <ul>
             {allGroupContact.length > 0
               ? allGroupContact.map(item => (

@@ -26,6 +26,20 @@ const groupReducer = (state = init, action) => {
         groupName: state.group.find(item => item.id === action.payload.id)
       };
     }
+
+    case Types.EDIT_GROUP: {
+      const index = state.group.findIndex(item=> item.id === action.payload.group.id);
+
+      const newGroup = [...state.group];
+
+      newGroup[index] = action.payload.group;
+
+      return {
+        ...state,
+        group: newGroup
+      }
+    }
+
     default:
       return state;
   }

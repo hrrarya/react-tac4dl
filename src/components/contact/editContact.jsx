@@ -62,7 +62,7 @@ class EditContact extends Component {
   };
 
   render() {
-    const { id, fname, lname, workplace, phone, email, group } = this.state;
+    const { fname, lname, workplace, phone, email, group } = this.state;
     const { group: groups } = this.props.group;
     return (
       <div className="contact">
@@ -116,7 +116,7 @@ class EditContact extends Component {
           >
             <option>Select a group</option>
             {groups.map(item => (
-              <option key={item.id} value={item.id}>
+              <option key={item.id} value={item.id} selected={item.id === group}>
                 {item.gname}
               </option>
             ))}

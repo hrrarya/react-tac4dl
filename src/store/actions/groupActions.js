@@ -26,3 +26,12 @@ export const getGroup = id => dispatch => {
     }
   });
 };
+
+export const editGroup = group => dispatch => {
+  dispatch({
+    type: Types.EDIT_GROUP,
+    payload: {
+      group
+    }
+  })
+}
