@@ -36,7 +36,7 @@ class EditGroup extends Component {
             className="u-full-width"
             type="text"
             name="gname"
-            value={gname ?? ""}
+            value={gname || ""}
             placeholder="Group Name"
             onChange={this.handleOnChange}
           />
