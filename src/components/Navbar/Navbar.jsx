@@ -1,6 +1,6 @@
 import React from "react";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 class Navbar extends React.Component {
   render() {
@@ -8,10 +8,14 @@ class Navbar extends React.Component {
       <div className="row">
         <ul className="navbar">
           <li>
-            <Link to="/">Contact List</Link>
+            <NavLink exact activeClassName="selected" to="/">
+              Contact List
+            </NavLink>
           </li>
           <li>
-            <Link to="/group-list">Group List</Link>
+            <NavLink activeClassName="selected" to="/group-list">
+              Group List
+            </NavLink>
           </li>
         </ul>
       </div>

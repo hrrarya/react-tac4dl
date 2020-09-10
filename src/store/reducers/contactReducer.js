@@ -21,6 +21,20 @@ const contactReducer = (state = init, action) => {
       };
     }
 
+    case Types.EDIT_CONTACT: {
+      const index = state.contact.findIndex(
+        item => item.id === action.payload.contact.id
+      );
+
+      const newContact = [...state.contact];
+
+      newContact[index] = action.payload.contact;
+      return {
+        ...state,
+        contact: newContact
+      };
+    }
+
     default:
       return state;
   }

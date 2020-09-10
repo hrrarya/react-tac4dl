@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 // import avater from "../../img/avater.jpg";
 
 class SingleContact extends Component {
@@ -25,22 +26,29 @@ class SingleContact extends Component {
 
   render() {
     const { fname, lname, email, phone, workplace } = this.state.contact;
-    const { groupName } = this.state;
-    console.log(this.state);
+    const { id, groupName } = this.state;
     return (
       <div className="single-contact">
         <div className="row">
           <div className="four columns">
             <div className="img-file">
               <span>
-                <img src={"https://cdn.jsdelivr.net/gh/hrrarya/react-tac4dl@master/src/img/avater.jpg"} alt="contact-avater" />
+                <img
+                  src={
+                    "https://cdn.jsdelivr.net/gh/hrrarya/react-tac4dl@master/src/img/avater.jpg"
+                  }
+                  alt="contact-avater"
+                />
               </span>
               <input name="Select File" type="file" />
             </div>
           </div>
           <div className="eight columns contact-data">
             <h5>
-              {fname} {lname}
+              {fname} {lname}{" "}
+              <Link to={`/contact-edit/${id}`}>
+                <button>Edit</button>
+              </Link>
             </h5>
             <p>{phone}</p>
             <p>{email}</p>

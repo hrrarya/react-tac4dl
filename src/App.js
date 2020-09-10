@@ -9,6 +9,7 @@ import GroupList from "./components/group/GroupList";
 import Group from "./components/group/Group";
 import SingleGroup from "./components/group/singleGroup";
 import SingleContact from "./components/contact/singleContact";
+import EditContact from "./components/contact/editContact";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route exact path="/group-list" component={GroupList} />
         <Route path="/group-list/:id" component={SingleGroup} />
         <Route path="/contact-list/:id" component={SingleContact} />
+        <Route path="/contact-edit/:id" component={EditContact} />
       </Switch>
     </Router>
   );

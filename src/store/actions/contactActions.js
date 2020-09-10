@@ -17,3 +17,12 @@ export const removeContact = contact => dispatch => {
     }
   });
 };
+
+export const editContact = contact => dispatch => {
+  dispatch({
+    type: Types.EDIT_CONTACT,
+    payload: {
+      contact
+    }
+  });
+};

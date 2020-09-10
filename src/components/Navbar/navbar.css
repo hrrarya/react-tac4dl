@@ -1,14 +1,18 @@
-ul.navbar{
-  margin:0;
-  padding:0;
-  list-style:none;
+ul.navbar {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.navbar li{
-  float:left;
+.navbar li {
+  float: left;
 }
-.navbar li a{
+.navbar li a {
   text-decoration: none;
-  display:block;
-  padding:10px 15px;
-  color:aqua ;
+  display: block;
+  padding: 10px 15px;
+  color: aqua;
+}
+.selected {
+  font-style: bold !important;
+  color: #000 !important;
 }

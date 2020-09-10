@@ -29,7 +29,6 @@ class ContactList extends React.Component {
               const groupName = group.filter(
                 group => group.id === item.gname
               )[0];
-              console.log(groupName);
               return (
                 <tr key={item.id} id={item.id}>
                   <td>
@@ -40,7 +39,11 @@ class ContactList extends React.Component {
                   <td>{item.workplace}</td>
                   <td>{item.phone}</td>
                   <td>{item.email}</td>
-                  <td>{groupName ? groupName.gname : ""}</td>
+                  <td>
+                    <Link to={`/group-list/${item.gname}`}>
+                      {groupName ? groupName.gname : ""}
+                    </Link>
+                  </td>
                   <td>
                     <button onClick={() => this.props.removeContact(item)}>
                       Remove
