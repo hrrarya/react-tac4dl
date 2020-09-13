@@ -10,6 +10,10 @@ export const addGroup = group => dispatch => {
 };
 
 export const removeGroup = group => dispatch => {
+  if (group.id === "fabourite-group-id-i-am-arya") {
+    alert("Non Deletable");
+    return false;
+  }
   dispatch({
     type: Types.REMOVE_GROUP,
     payload: {
@@ -33,5 +37,5 @@ export const editGroup = group => dispatch => {
     payload: {
       group
     }
-  })
-}
+  });
+};

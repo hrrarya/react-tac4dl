@@ -1,7 +1,7 @@
 import * as Types from "../actions/types";
 
 const init = {
-  group: [],
+  group: [{ id: "fabourite-group-id-i-am-arya", gname: "Favourite" }],
   groupName: {}
 };
 
@@ -28,7 +28,9 @@ const groupReducer = (state = init, action) => {
     }
 
     case Types.EDIT_GROUP: {
-      const index = state.group.findIndex(item=> item.id === action.payload.group.id);
+      const index = state.group.findIndex(
+        item => item.id === action.payload.group.id
+      );
 
       const newGroup = [...state.group];
 
@@ -37,7 +39,7 @@ const groupReducer = (state = init, action) => {
       return {
         ...state,
         group: newGroup
-      }
+      };
     }
 
     default:

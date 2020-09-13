@@ -36,3 +36,7 @@
 .contact-data * {
   margin-bottom: 0;
 }
+.contact-list th,
+.contact-list td {
+  text-align: center;
+}

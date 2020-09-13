@@ -26,3 +26,12 @@ export const editContact = contact => dispatch => {
     }
   });
 };
+
+export const addFavourite = contact => dispatch => {
+  dispatch({
+    type: Types.ADD_FAVOURITE,
+    payload: {
+      contact
+    }
+  });
+};

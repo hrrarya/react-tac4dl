@@ -12,7 +12,8 @@ class Contact extends React.Component {
     workplace: "",
     phone: "",
     email: "",
-    gname: ""
+    gname: "",
+    favourite: false
   };
 
   handleOnChange = e => {
@@ -22,7 +23,15 @@ class Contact extends React.Component {
   };
 
   handleOnSubmit = e => {
-    const { fname, lname, workplace, phone, email, gname } = this.state;
+    const {
+      fname,
+      lname,
+      workplace,
+      phone,
+      email,
+      gname,
+      favourite
+    } = this.state;
     e.preventDefault();
     const contact = {
       id: uuidv4(),
@@ -31,7 +40,8 @@ class Contact extends React.Component {
       workplace,
       phone,
       email,
-      gname
+      gname,
+      favourite
     };
     this.props.addContact(contact);
     this.setState({
@@ -98,11 +108,13 @@ class Contact extends React.Component {
             onChange={this.handleOnChange}
           >
             <option>Select a group</option>
-            {group.map(item => (
-              <option key={item.id} value={item.id}>
-                {item.gname}
-              </option>
-            ))}
+            {group
+              .filter(g => g.id !== "fabourite-group-id-i-am-arya")
+              .map(item => (
+                <option key={item.id} value={item.id}>
+                  {item.gname}
+                </option>
+              ))}
           </select>
           <input
             className="button-primary"

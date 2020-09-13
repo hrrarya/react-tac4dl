@@ -20,18 +20,20 @@ class GroupList extends Component {
             </tr>
           </thead>
           <tbody>
-            {group.map(item => (
-              <tr key={item.id} id={item.id}>
-                <td>
-                  <Link to={`/group-list/${item.id}`}>{item.gname}</Link>
-                </td>
-                <td>
-                  <button onClick={() => this.props.removeGroup(item)}>
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {group
+              .filter(g => g.id !== "fabourite-group-id-i-am-arya")
+              .map(item => (
+                <tr key={item.id} id={item.id}>
+                  <td>
+                    <Link to={`/group-list/${item.id}`}>{item.gname}</Link>
+                  </td>
+                  <td>
+                    <button onClick={() => this.props.removeGroup(item)}>
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

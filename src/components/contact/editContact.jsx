@@ -10,16 +10,24 @@ class EditContact extends Component {
     workplace: "",
     phone: "",
     email: "",
-    group: ""
+    group: "",
+    favourite: false
   };
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const { id } = this.props.match.params;
     const { contact } = this.props.contact;
     const { group } = this.props.group;
-    const { fname, lname, workplace, phone, email, gname } = contact.find(
-      item => item.id === id
-    );
+    const {
+      fname,
+      lname,
+      workplace,
+      phone,
+      email,
+      gname,
+      favourite
+    } = contact.find(item => item.id === id);
+
     const contactGroup = group.find(item => item.id === gname);
     this.setState({
       id,
@@ -28,7 +36,8 @@ class EditContact extends Component {
       workplace,
       phone,
       email,
-      group: contactGroup.id
+      favourite,
+      group: contactGroup ? contactGroup.id : ""
     });
   }
 
@@ -39,8 +48,17 @@ class EditContact extends Component {
   };
 
   handleOnSubmit = e => {
-    const { id, fname, lname, workplace, phone, email, group } = this.state;
     e.preventDefault();
+    const {
+      id,
+      fname,
+      lname,
+      workplace,
+      phone,
+      email,
+      group,
+      favourite
+    } = this.state;
     const contact = {
       id,
       fname,
@@ -48,9 +66,14 @@ class EditContact extends Component {
       workplace,
       phone,
       email,
+      favourite,
       gname: group || ""
     };
     this.props.editContact(contact);
+    this.resetState();
+  };
+
+  resetState = () => {
     this.setState({
       fname: "",
       lname: "",
@@ -111,22 +134,24 @@ class EditContact extends Component {
           <select
             name="group"
             className="u-full-width"
-            value={group ? group.id : ""}
             onChange={this.handleOnChange}
           >
             <option>Select a group</option>
-            {groups.map(item => (
-              <option key={item.id} value={item.id} selected={item.id === group}>
-                {item.gname}
-              </option>
-            ))}
+            {groups
+              .filter(g => g.id !== "fabourite-group-id-i-am-arya")
+              .map(item => {
+                return (
+                  <option
+                    key={item.id}
+                    value={item.id}
+                    defaultValue={item.id === group || ""}
+                  >
+                    {item.gname}
+                  </option>
+                );
+              })}
           </select>
-          <input
-            className="button-primary"
-            type="submit"
-            value="Submit"
-            //onClick={}
-          />
+          <input className="button-primary" type="submit" value="Submit" />
         </form>
       </div>
     );

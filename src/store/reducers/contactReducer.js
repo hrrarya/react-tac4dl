@@ -1,7 +1,18 @@
 import * as Types from "../actions/types.js";
 
 const init = {
-  contact: []
+  contact: [
+    {
+      email: "hrrarya6@gmail.com",
+      fname: "Hridoy",
+      lname: "Mozumder",
+      id: "one",
+      gname: "group-id-here",
+      phone: "01777488806",
+      workplace: "Zone7",
+      favourite: true
+    }
+  ]
 };
 
 const contactReducer = (state = init, action) => {
@@ -29,6 +40,23 @@ const contactReducer = (state = init, action) => {
       const newContact = [...state.contact];
 
       newContact[index] = action.payload.contact;
+      return {
+        ...state,
+        contact: newContact
+      };
+    }
+
+    case Types.ADD_FAVOURITE: {
+      const index = state.contact.findIndex(
+        item => item.id === action.payload.contact.id
+      );
+
+      const changedContact = state.contact[index];
+
+      changedContact.favourite = !action.payload.contact.fav;
+
+      const newContact = [...state.contact];
+      newContact[index] = changedContact;
       return {
         ...state,
         contact: newContact
