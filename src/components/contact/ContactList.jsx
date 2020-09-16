@@ -6,12 +6,13 @@ import {
   addFavourite
 } from "../../store/actions/contactActions";
 import { Link } from "react-router-dom";
+import {FcLikePlaceholder,FcLike} from 'react-icons/fc';
 
 class ContactList extends React.Component {
   state = {};
 
   handleFavourite = bool => {
-    if (bool) return { color: "red" };
+    if (bool) return { color: "green" };
 
     return { color: "gray" };
   };
@@ -54,12 +55,12 @@ class ContactList extends React.Component {
                     <span
                       role="img"
                       aria-label="1"
-                      style={this.handleFavourite(fav)}
+                     // style={this.handleFavourite(fav)}
                       onClick={() =>
                         this.props.addFavourite({ id: item.id, fav })
                       }
                     >
-                      ❤️
+                      {item.favourite ? <FcLike/> : <FcLikePlaceholder/>}
                     </span>
                   </td>
                   <td>{item.phone}</td>
