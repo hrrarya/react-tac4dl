@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import {FcEditImage} from 'react-icons/fc';
+
 
 class SingleGroup extends Component {
   render() {
@@ -16,7 +18,7 @@ class SingleGroup extends Component {
         </Link>
         <li>
           {groupName.gname} {" "} 
-                  <Link to={`/group-edit/${id}`}>Edit</Link>
+                  <Link to={`/group-edit/${id}`}><FcEditImage /></Link>
           <ul>
             {allGroupContact.length > 0
               ? allGroupContact.map(item => (

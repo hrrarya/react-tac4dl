@@ -3,6 +3,8 @@ import "./group.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { removeGroup } from "../../store/actions/groupActions";
+import {FcEmptyTrash,FcAddDatabase} from 'react-icons/fc';
+import {FcEditImage} from 'react-icons/fc';
 
 class GroupList extends Component {
   render() {
@@ -10,7 +12,7 @@ class GroupList extends Component {
     return (
       <div className="row">
         <Link to="/create-group">
-          <button className="group-create">+</button>
+          <FcAddDatabase style={{fontSize: '30px'}}/>
         </Link>
         <table className="contact-list u-full-width">
           <thead>
@@ -28,9 +30,7 @@ class GroupList extends Component {
                     <Link to={`/group-list/${item.id}`}>{item.gname}</Link>
                   </td>
                   <td>
-                    <button onClick={() => this.props.removeGroup(item)}>
-                      Remove
-                    </button>
+                    <FcEmptyTrash onClick={() => this.props.removeGroup(item)} style={{fontSize: '22px'}} /> /  <Link to={`/group-edit/${item.id}`}><FcEditImage /></Link>
                   </td>
                 </tr>
               ))}

@@ -6,7 +6,7 @@ import {
   addFavourite
 } from "../../store/actions/contactActions";
 import { Link } from "react-router-dom";
-import {FcLikePlaceholder,FcLike} from 'react-icons/fc';
+import {FcLikePlaceholder,FcLike,FcEmptyTrash,FcAddDatabase} from 'react-icons/fc';
 
 class ContactList extends React.Component {
   state = {};
@@ -23,7 +23,7 @@ class ContactList extends React.Component {
     return (
       <div className="row">
         <Link to="/create-contact">
-          <button className="contact-create">+</button>
+          <FcAddDatabase style={{fontSize: '30px'}}/>
         </Link>
         <table className="contact-list u-full-width">
           <thead>
@@ -71,9 +71,7 @@ class ContactList extends React.Component {
                     </Link>
                   </td>
                   <td>
-                    <button onClick={() => this.props.removeContact(item)}>
-                      Remove
-                    </button>
+                    <FcEmptyTrash onClick={() => this.props.removeContact(item)} style={{fontSize: '22px'}} />
                   </td>
                 </tr>
               );

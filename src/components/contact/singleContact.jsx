@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import avater from "../../img/avater.jpg";
+import {FcEditImage} from 'react-icons/fc';
 
 class SingleContact extends Component {
   state = {
@@ -47,7 +47,7 @@ class SingleContact extends Component {
             <h5>
               {fname} {lname}{" "}
               <Link to={`/contact-edit/${id}`}>
-                <button>Edit</button>
+                <FcEditImage style={{marginLeft: '20px'}}/>
               </Link>
             </h5>
             <p>{phone}</p>
