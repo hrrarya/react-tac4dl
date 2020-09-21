@@ -17,6 +17,11 @@ class Navbar extends React.Component {
               Group List
             </NavLink>
           </li>
+          <li>
+            <NavLink activeClassName="selected" to="/favourite-list">
+              Favourite
+            </NavLink>
+          </li>
         </ul>
       </div>
     );

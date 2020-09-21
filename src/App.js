@@ -11,6 +11,7 @@ import SingleGroup from "./components/group/singleGroup";
 import SingleContact from "./components/contact/singleContact";
 import EditContact from "./components/contact/editContact";
 import EditGroup from "./components/group/editGroup";
+import Favourite from "./components/favourite/Favourite";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/contact-list/:id" component={SingleContact} />
         <Route path="/contact-edit/:id" component={EditContact} />
         <Route path="/group-edit/:id" component={EditGroup} />
+        <Route path="/favourite-list" component={Favourite} />
       </Switch>
     </Router>
   );
