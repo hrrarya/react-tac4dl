@@ -1,37 +1,61 @@
 import * as Types from "./types.js";
 
-export const addContact = contact => dispatch => {
+export const addContact = (contact) => (dispatch) => {
   dispatch({
     type: Types.SET_CONTACT,
     payload: {
-      contact
-    }
+      contact,
+    },
   });
 };
 
-export const removeContact = contact => dispatch => {
+export const removeContact = (contact) => (dispatch) => {
   dispatch({
     type: Types.REMOVE_CONTACT,
     payload: {
-      contact
-    }
+      contact,
+    },
   });
 };
 
-export const editContact = contact => dispatch => {
+export const editContact = (contact) => (dispatch) => {
   dispatch({
     type: Types.EDIT_CONTACT,
     payload: {
-      contact
-    }
+      contact,
+    },
   });
 };
 
-export const addFavourite = contact => dispatch => {
+export const addFavourite = (contact) => (dispatch) => {
   dispatch({
     type: Types.ADD_FAVOURITE,
     payload: {
-      contact
-    }
+      contact,
+    },
+  });
+};
+
+export const addRemovalQueue = (contact) => (dispatch) => {
+  dispatch({
+    type: Types.ADD_REMOVAL_QUEUE,
+    payload: {
+      contact,
+    },
+  });
+};
+
+export const undoQueue = (contact) => (dispatch) => {
+  dispatch({
+    type: Types.QUEUE_UNDO,
+    payload: {
+      contact,
+    },
+  });
+};
+
+export const cleanQueue = () => (dispatch) => {
+  dispatch({
+    type: Types.CLEAN_QUEUE,
   });
 };

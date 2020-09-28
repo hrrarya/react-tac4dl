@@ -10,9 +10,10 @@ const init = {
       gname: "group-id-here",
       phone: "01777488806",
       workplace: "Zone7",
-      favourite: true
-    }
-  ]
+      favourite: true,
+    },
+  ],
+  queue: [],
 };
 
 const contactReducer = (state = init, action) => {
@@ -20,21 +21,21 @@ const contactReducer = (state = init, action) => {
     case Types.SET_CONTACT: {
       return {
         ...state,
-        contact: [...state.contact, action.payload.contact]
+        contact: [...state.contact, action.payload.contact],
       };
     }
     case Types.REMOVE_CONTACT: {
       return {
         ...state,
         contact: state.contact.filter(
-          item => item.id !== action.payload.contact.id
-        )
+          (item) => item.id !== action.payload.contact.id
+        ),
       };
     }
 
     case Types.EDIT_CONTACT: {
       const index = state.contact.findIndex(
-        item => item.id === action.payload.contact.id
+        (item) => item.id === action.payload.contact.id
       );
 
       const newContact = [...state.contact];
@@ -42,13 +43,13 @@ const contactReducer = (state = init, action) => {
       newContact[index] = action.payload.contact;
       return {
         ...state,
-        contact: newContact
+        contact: newContact,
       };
     }
 
     case Types.ADD_FAVOURITE: {
       const index = state.contact.findIndex(
-        item => item.id === action.payload.contact.id
+        (item) => item.id === action.payload.contact.id
       );
 
       const changedContact = state.contact[index];
@@ -59,7 +60,35 @@ const contactReducer = (state = init, action) => {
       newContact[index] = changedContact;
       return {
         ...state,
-        contact: newContact
+        contact: newContact,
+      };
+    }
+
+    case Types.ADD_REMOVAL_QUEUE: {
+      return {
+        ...state,
+        queue: [...state.queue, action.payload.contact],
+      };
+    }
+
+    case Types.QUEUE_UNDO: {
+      const removedContact = state.queue.find(
+        (item) => item.id === action.payload.contact.id
+      );
+
+      return {
+        ...state,
+        queue: state.queue.filter(
+          (item) => item.id !== action.payload.contact.id
+        ),
+      };
+    }
+
+    case Types.CLEAN_QUEUE: {
+      return {
+        ...state,
+        contact: state.contact.filter((item) => !state.queue.includes(item)),
+        queue: [],
       };
     }
 
