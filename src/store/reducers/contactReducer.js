@@ -24,14 +24,6 @@ const contactReducer = (state = init, action) => {
         contact: [...state.contact, action.payload.contact],
       };
     }
-    case Types.REMOVE_CONTACT: {
-      return {
-        ...state,
-        contact: state.contact.filter(
-          (item) => item.id !== action.payload.contact.id
-        ),
-      };
-    }
 
     case Types.EDIT_CONTACT: {
       const index = state.contact.findIndex(
@@ -72,10 +64,6 @@ const contactReducer = (state = init, action) => {
     }
 
     case Types.QUEUE_UNDO: {
-      const removedContact = state.queue.find(
-        (item) => item.id === action.payload.contact.id
-      );
-
       return {
         ...state,
         queue: state.queue.filter(
