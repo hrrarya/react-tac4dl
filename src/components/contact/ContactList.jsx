@@ -19,8 +19,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Undo from "../utils/Undo";
 
 class ContactList extends React.Component {
-  state = {};
-
   handleFavourite = (bool) => {
     if (bool) return { color: "green" };
 
