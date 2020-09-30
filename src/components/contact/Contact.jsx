@@ -13,16 +13,16 @@ class Contact extends React.Component {
     phone: "",
     email: "",
     gname: "",
-    favourite: false
+    favourite: false,
   };
 
-  handleOnChange = e => {
+  handleOnChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleOnSubmit = e => {
+  handleOnSubmit = (e) => {
     const {
       fname,
       lname,
@@ -30,7 +30,7 @@ class Contact extends React.Component {
       phone,
       email,
       gname,
-      favourite
+      favourite,
     } = this.state;
     e.preventDefault();
     const contact = {
@@ -41,7 +41,7 @@ class Contact extends React.Component {
       phone,
       email,
       gname,
-      favourite
+      favourite,
     };
     this.props.addContact(contact);
     this.setState({
@@ -50,7 +50,6 @@ class Contact extends React.Component {
       workplace: "",
       phone: "",
       email: "",
-      gname: ""
     });
   };
 
@@ -109,12 +108,14 @@ class Contact extends React.Component {
           >
             <option>Select a group</option>
             {group
-              .filter(g => g.id !== "fabourite-group-id-i-am-arya")
-              .map(item => (
-                <option key={item.id} value={item.id}>
-                  {item.gname}
-                </option>
-              ))}
+              .filter((g) => g.id !== "fabourite-group-id-i-am-arya")
+              .map((item) => {
+                return (
+                  <option key={item.id} value={item.id}>
+                    {item.gname}
+                  </option>
+                );
+              })}
           </select>
           <input
             className="button-primary"
@@ -128,8 +129,8 @@ class Contact extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  group: state.group
+const mapStateToProps = (state) => ({
+  group: state.group,
 });
 
 export default connect(mapStateToProps, { addContact, getGroup })(Contact);

@@ -1,18 +1,7 @@
 import * as Types from "../actions/types.js";
 
 const init = {
-  contact: [
-    {
-      email: "hrrarya6@gmail.com",
-      fname: "Hridoy",
-      lname: "Mozumder",
-      id: "one",
-      gname: "group-id-here",
-      phone: "01777488806",
-      workplace: "Zone7",
-      favourite: true,
-    },
-  ],
+  contact: [],
   queue: [],
 };
 

@@ -2,7 +2,7 @@ import * as Types from "../actions/types";
 
 const init = {
   group: [{ id: "fabourite-group-id-i-am-arya", gname: "Favourite" }],
-  groupName: {}
+  queue: [],
 };
 
 const groupReducer = (state = init, action) => {
@@ -10,26 +10,20 @@ const groupReducer = (state = init, action) => {
     case Types.SET_GROUP: {
       return {
         ...state,
-        group: [...state.group, action.payload.group]
-      };
-    }
-    case Types.REMOVE_GROUP: {
-      return {
-        ...state,
-        group: state.group.filter(item => item.id !== action.payload.group.id)
+        group: [...state.group, action.payload.group],
       };
     }
 
     case Types.GET_GROUP: {
       return {
         ...state,
-        groupName: state.group.find(item => item.id === action.payload.id)
+        groupName: state.group.find((item) => item.id === action.payload.id),
       };
     }
 
     case Types.EDIT_GROUP: {
       const index = state.group.findIndex(
-        item => item.id === action.payload.group.id
+        (item) => item.id === action.payload.group.id
       );
 
       const newGroup = [...state.group];
@@ -38,7 +32,31 @@ const groupReducer = (state = init, action) => {
 
       return {
         ...state,
-        group: newGroup
+        group: newGroup,
+      };
+    }
+
+    case Types.ADD_REMOVAL_QUEUE_GROUP: {
+      return {
+        ...state,
+        queue: [...state.queue, action.payload.group],
+      };
+    }
+
+    case Types.QUEUE_UNDO_GROUP: {
+      return {
+        ...state,
+        queue: state.queue.filter(
+          (item) => item.id !== action.payload.group.id
+        ),
+      };
+    }
+
+    case Types.CLEAN_QUEUE_GROUP: {
+      return {
+        ...state,
+        group: state.group.filter((item) => !state.queue.includes(item)),
+        queue: [],
       };
     }
 

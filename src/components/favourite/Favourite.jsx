@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FcEmptyTrash, FcAddDatabase } from "react-icons/fc";
 import {
-  removeContact,
   addRemovalQueue,
   undoQueue,
   cleanQueue,
@@ -85,7 +84,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  removeContact,
   addRemovalQueue,
   undoQueue,
   cleanQueue,
