@@ -27,50 +27,57 @@ class Favourite extends Component {
         <Link to="/create-contact">
           <FcAddDatabase style={{ fontSize: "30px" }} />
         </Link>
-        <table className="contact-list u-full-width">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Workplace</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Group</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {favourites
-              .filter((item) => !removalQueue.includes(item))
-              .map((item) => {
-                const groupName = group.filter(
-                  (group) => group.id === item.gname
-                )[0];
-                return (
-                  <tr key={item.id} id={item.id}>
-                    <td>
-                      <Link
-                        to={`/contact-list/${item.id}`}
-                      >{`${item.fname} ${item.lname}`}</Link>{" "}
-                    </td>
-                    <td>{item.workplace}</td>
-                    <td>{item.phone}</td>
-                    <td>{item.email}</td>
-                    <td>
-                      <Link to={`/group-list/${item.gname}`}>
-                        {groupName ? groupName.gname : ""}
-                      </Link>
-                    </td>
-                    <td>
-                      <FcEmptyTrash
-                        onClick={() => this.notify(item)}
-                        style={{ fontSize: "22px" }}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+
+        {favourites.length === 0 && (
+          <h3 style={{ textAlign: "center" }}>No Favourite Contact.</h3>
+        )}
+
+        {favourites.length > 0 && (
+          <table className="contact-list u-full-width">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Workplace</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Group</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {favourites
+                .filter((item) => !removalQueue.includes(item))
+                .map((item) => {
+                  const groupName = group.filter(
+                    (group) => group.id === item.gname
+                  )[0];
+                  return (
+                    <tr key={item.id} id={item.id}>
+                      <td>
+                        <Link
+                          to={`/contact-list/${item.id}`}
+                        >{`${item.fname} ${item.lname}`}</Link>{" "}
+                      </td>
+                      <td>{item.workplace}</td>
+                      <td>{item.phone}</td>
+                      <td>{item.email}</td>
+                      <td>
+                        <Link to={`/group-list/${item.gname}`}>
+                          {groupName ? groupName.gname : ""}
+                        </Link>
+                      </td>
+                      <td>
+                        <FcEmptyTrash
+                          onClick={() => this.notify(item)}
+                          style={{ fontSize: "22px" }}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        )}
         <ToastContainer closeOnClick={false} closeButton={false} />
       </div>
     );

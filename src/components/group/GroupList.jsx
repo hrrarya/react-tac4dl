@@ -27,38 +27,46 @@ class GroupList extends Component {
         <Link to="/create-group">
           <FcAddDatabase style={{ fontSize: "30px" }} />
         </Link>
-        <table className="contact-list u-full-width">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {group
-              .filter(
-                (g) =>
-                  g.id !== "fabourite-group-id-i-am-arya" && !queue.includes(g)
-              )
-              .map((item) => (
-                <tr key={item.id} id={item.id}>
-                  <td>
-                    <Link to={`/group-list/${item.id}`}>{item.gname}</Link>
-                  </td>
-                  <td>
-                    <FcEmptyTrash
-                      onClick={() => this.notify(item)}
-                      style={{ fontSize: "22px" }}
-                    />{" "}
-                    /{" "}
-                    <Link to={`/group-edit/${item.id}`}>
-                      <FcEditImage />
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+
+        {group.length === 1 && (
+          <h3 style={{ textAlign: "center" }}>No Group Found</h3>
+        )}
+
+        {group.length > 1 && (
+          <table className="contact-list u-full-width">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {group
+                .filter(
+                  (g) =>
+                    g.id !== "fabourite-group-id-i-am-arya" &&
+                    !queue.includes(g)
+                )
+                .map((item) => (
+                  <tr key={item.id} id={item.id}>
+                    <td>
+                      <Link to={`/group-list/${item.id}`}>{item.gname}</Link>
+                    </td>
+                    <td>
+                      <FcEmptyTrash
+                        onClick={() => this.notify(item)}
+                        style={{ fontSize: "22px" }}
+                      />{" "}
+                      /{" "}
+                      <Link to={`/group-edit/${item.id}`}>
+                        <FcEditImage />
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        )}
         <ToastContainer closeButton={false} closeOnClick={false} />
       </div>
     );

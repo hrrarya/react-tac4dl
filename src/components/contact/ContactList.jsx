@@ -6,6 +6,8 @@ import {
   addRemovalQueue,
   undoQueue,
   cleanQueue,
+  selectContact,
+  selectAllContact,
 } from "../../store/actions/contactActions";
 import { Link } from "react-router-dom";
 import {
@@ -19,6 +21,26 @@ import "react-toastify/dist/ReactToastify.css";
 import Undo from "../utils/Undo";
 
 class ContactList extends React.Component {
+  state = {
+    select: false,
+    checkedAll: false,
+  };
+
+  handleSelect = (e) => {
+    e.preventDefault();
+    this.setState({
+      select: !this.state.select,
+    });
+  };
+
+  handleAllSelect = () => {
+    this.setState({
+      checkedAll: !this.state.checkedAll,
+    });
+
+    this.props.selectAllContact(this.state.checkedAll);
+  };
+
   handleFavourite = (bool) => {
     if (bool) return { color: "green" };
 
@@ -32,18 +54,39 @@ class ContactList extends React.Component {
     });
   };
 
-  render() {
-    const { contact, removalQueue } = this.props;
-    const { group } = this.props.group;
+  checkSelect = (item) => item.checked === 0;
 
+  componentDidMount() {
+    const checkedAll = this.props.contact.every(this.checkSelect);
+
+    console.log(checkedAll);
+
+    this.setState({
+      ...this.state,
+      checkedAll: checkedAll,
+    });
+  }
+
+  /* static getDerivedStateFromProps(nextProps, prevState) {
+    const checkedAll = nextProps.contact.filter(item => item.checked);
+
+    return prevState;
+  } */
+
+  render() {
+    const { contact, group, removalQueue } = this.props;
+    const { select } = this.state;
     return (
       <div className="row">
         <Link to="/create-contact">
           <FcAddDatabase style={{ fontSize: "30px" }} />
         </Link>
+        <br />
+        <button onClick={this.handleSelect}>Select</button>
         <table className="contact-list u-full-width">
           <thead>
             <tr>
+              {select && <th onClick={this.handleAllSelect}>Select All</th>}
               <th>Name</th>
               <th>Workplace</th>
               <th>Add to favourite</th>
@@ -60,9 +103,22 @@ class ContactList extends React.Component {
                 const groupName = group.filter(
                   (group) => group.id === item.gname
                 )[0];
-                const fav = item.favourite;
+                const { fav, checked } = item;
                 return (
                   <tr key={item.id} id={item.id}>
+                    {select && (
+                      <td>
+                        <input
+                          type="checkbox"
+                          name="contact"
+                          id={item.id}
+                          onChange={() =>
+                            this.props.selectContact({ id: item.id, checked })
+                          }
+                          checked={item.checked === 1 || false}
+                        />
+                      </td>
+                    )}
                     <td>
                       <Link
                         to={`/contact-list/${item.id}`}
@@ -107,7 +163,7 @@ class ContactList extends React.Component {
 
 const mapStateToProps = (state) => ({
   contact: state.contact.contact,
-  group: state.group,
+  group: state.group.group,
   removalQueue: state.contact.queue,
 });
 
@@ -116,4 +172,6 @@ export default connect(mapStateToProps, {
   addRemovalQueue,
   undoQueue,
   cleanQueue,
+  selectContact,
+  selectAllContact,
 })(ContactList);

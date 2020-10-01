@@ -50,3 +50,21 @@ export const cleanQueue = () => (dispatch) => {
     type: Types.CLEAN_QUEUE,
   });
 };
+
+export const selectContact = (contact) => (dispatch) => {
+  dispatch({
+    type: Types.SELECT_CONTACT,
+    payload: {
+      contact,
+    },
+  });
+};
+
+export const selectAllContact = (contact) => (dispatch) => {
+  dispatch({
+    type: Types.SELECT_ALL_CONTACT,
+    payload: {
+      contact,
+    },
+  });
+};

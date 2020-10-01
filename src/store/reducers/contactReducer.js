@@ -69,6 +69,39 @@ const contactReducer = (state = init, action) => {
       };
     }
 
+    case Types.SELECT_CONTACT: {
+      const index = state.contact.findIndex(
+        (item) => item.id === action.payload.contact.id
+      );
+
+      const changedContact = state.contact[index];
+      changedContact.checked = action.payload.contact.checked ? 0 : 1;
+
+      const newContact = [...state.contact];
+      newContact[index] = changedContact;
+
+      return {
+        ...state,
+        contact: newContact,
+      };
+    }
+
+    case Types.SELECT_ALL_CONTACT: {
+      const newContact = [...state.contact];
+
+      for (let index in newContact) {
+        if (action.payload.contact) {
+          newContact[index].checked = 1;
+        } else {
+          newContact[index].checked = 0;
+        }
+      }
+      return {
+        ...state,
+        contact: newContact,
+      };
+    }
+
     default:
       return state;
   }

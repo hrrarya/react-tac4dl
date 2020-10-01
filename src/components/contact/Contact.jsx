@@ -42,6 +42,7 @@ class Contact extends React.Component {
       email,
       gname,
       favourite,
+      checked: false,
     };
     this.props.addContact(contact);
     this.setState({
