@@ -59,8 +59,6 @@ class ContactList extends React.Component {
   componentDidMount() {
     const checkedAll = this.props.contact.every(this.checkSelect);
 
-    console.log(checkedAll);
-
     this.setState({
       ...this.state,
       checkedAll: checkedAll,
@@ -103,7 +101,7 @@ class ContactList extends React.Component {
                 const groupName = group.filter(
                   (group) => group.id === item.gname
                 )[0];
-                const { fav, checked } = item;
+                const { favourite, checked } = item;
                 return (
                   <tr key={item.id} id={item.id}>
                     {select && (
@@ -131,7 +129,10 @@ class ContactList extends React.Component {
                         aria-label="1"
                         // style={this.handleFavourite(fav)}
                         onClick={() =>
-                          this.props.addFavourite({ id: item.id, fav })
+                          this.props.addFavourite({
+                            id: item.id,
+                            fav: favourite,
+                          })
                         }
                       >
                         {item.favourite ? <FcLike /> : <FcLikePlaceholder />}
